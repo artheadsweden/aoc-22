@@ -20,13 +20,13 @@ def solver(data, part):
         else:
             match player2:
                 case 6: 
-                    y = player1 % 3 + 1
+                    total += player1 % 3 + 1
                 case 3: 
-                    y = player1
+                    total += player1
                 case 0: 
-                    y = (player1 + 1) % 3 + 1
+                    total += (player1 + 1) % 3 + 1
 
-            total += y + player2
+            total += player2
     return total
 
 
