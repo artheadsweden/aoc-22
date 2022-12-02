@@ -2,15 +2,13 @@ from utils.data_reader import get_puzzle_input
 def part1(data):
     col1 = {"A": 1, "B": 2, "C": 3}
     col2 = {"X": 1, "Y": 2, "Z": 3}
-    scores = {"L": 0, "D": 3, "W": 6}
-    
+        
     total = 0
     
     for game in data:
         player1, player2 = game.split()
         player1 = col1[player1]
         player2 = col2[player2]
-
 
         match player2 - player1:
             case 0:
@@ -45,7 +43,6 @@ def part2(data):
 
 def main():
     data = get_puzzle_input('02a.txt')
-
 
     print(f'Puzzle 1: {part1(data)}')
     print(f'Puzzle 2: {part2(data)}')
