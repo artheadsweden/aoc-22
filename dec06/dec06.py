@@ -1,10 +1,5 @@
 from utils.data_reader import get_puzzle_input
 
-def solve(data, marker):
-    for i in range(marker, len(data)):
-        if len(set(data[:i][-marker:])) == marker:
-            return i
-
 
 def main():
     data = get_puzzle_input('06a.txt', is_raw=True, is_str=True)
