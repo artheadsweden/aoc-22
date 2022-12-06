@@ -21,7 +21,7 @@ def part2(data):
 
 
 def main():
-    data = get_puzzle_input('03a.txt')
+    data = get_puzzle_input('03.txt')
 
     print(f'Puzzle 1: {part1(data)}')
     print(f'Puzzle 2: {part2(data)}')

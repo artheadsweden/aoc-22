@@ -27,7 +27,7 @@ def solve(data, part):
 
 
 def main():
-    data = get_puzzle_input('05a.txt', is_raw=True)
+    data = get_puzzle_input('05.txt', is_raw=True)
     print(f'Puzzle 1: {solve(data, 1)}')
     print(f'Puzzle 2: {solve(data, 2)}')
 

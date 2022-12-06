@@ -31,7 +31,7 @@ def solver(data, part):
 
 
 def main():
-    data = get_puzzle_input('02a.txt')
+    data = get_puzzle_input('02.txt')
 
     print(f'Puzzle 1: {solver(data, 1)}')
     print(f'Puzzle 2: {solver(data, 2)}')

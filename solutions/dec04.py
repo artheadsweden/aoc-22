@@ -1,7 +1,7 @@
 from utils.data_reader import get_puzzle_input
 
 def main():
-    data = get_puzzle_input('04a.txt')
+    data = get_puzzle_input('04.txt')
 
     split = lambda line: list(map(lambda section: tuple(map(int, section.split("-"))), line.split(",")))
     part1 = lambda data: sum([1 for s1, s2 in list(map(split, [line for line in data])) if (s1[0] - s2[0]) * (s1[1] - s2[1]) <= 0 ])
