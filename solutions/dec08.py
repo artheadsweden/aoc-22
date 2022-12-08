@@ -1,8 +1,8 @@
 from utils.data_reader import get_puzzle_input, short
 
 def solve(data):
-    tt = [[*map(int, l)] for l in data]
-    m1, m2, e, z, rr = short
+    m1, m2, m3, e, z, rr, ii = short
+    tt = [[*m3(ii, l)] for l in data]
     s = 0
     n = 2 * (z(tt[0]) + z(tt) - 2)
     for y in rr(1, z(tt) - 1):
@@ -18,8 +18,11 @@ def solve(data):
     return n, s
 
 def main():
+    import time
+    t1 = time.time()
     data = get_puzzle_input('08.txt')
     one, two = solve(data)
+    print(time.time()-t1)
     print(f'Puzzle 1: {one}')
     print(f'Puzzle 2: {two}')    
 

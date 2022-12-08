@@ -1,7 +1,7 @@
 from utils.data_reader import get_puzzle_input
 from string import ascii_uppercase
 
-def create_stacks_procedures2(data):
+def create_stacks_procedures(data):
     sep = [i for i, v in enumerate(data) if v == ""][0]
     cc = list(zip(*data[: sep - 1][::-1]))
     [cc.pop(p) for p in [i for i, c in enumerate(cc) if c[0] in "[] "][::-1]]
@@ -9,22 +9,9 @@ def create_stacks_procedures2(data):
     crates.insert(0, [])
     return crates, data[sep + 1 :], max(map(int, data[sep - 1].split()))
 
-def create_stacks_procedures(data):
-    sep = [i for i, v in enumerate(data) if v == ""][0]
-
-    crates = data[: sep - 1][::-1]
-    stack_num = max(map(int, data[sep - 1].split()))
-    stacks = [[] for _ in range(stack_num + 1)]
-    for line in crates:
-        items = [line[i] for i in range(1, len(line), 4)]
-        for i, value in enumerate(items):
-            if value != " ":
-                stacks[i + 1].append(value)
-    return stacks, data[sep + 1 :], stack_num
-
 
 def solve(data, part):
-    stacks, procedures, stack_num = create_stacks_procedures2(data)
+    stacks, procedures, stack_num = create_stacks_procedures(data)
     for line in procedures:
         _, a, _, b, _, c = [int(value) if i % 2 else value for i, value in enumerate(line.split())]
         stacks[c].extend(stacks[b][-a:][::-1]) if part == 1 else stacks[c].extend(stacks[b][-a:])
