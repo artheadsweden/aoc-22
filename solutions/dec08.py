@@ -2,18 +2,18 @@ from utils.data_reader import get_puzzle_input
 
 def solve(data):
     tt = [[*map(int, l)] for l in data]
+    m1, m2, e, z, rr = (min, max, enumerate, len, range)
     s = 0
-    n = 2 * (len(tt[0]) + len(tt) - 2)
-    e = enumerate
-    for y in range(1, len(tt) - 1):
-        for x in range(1, len(tt[0]) - 1):
+    n = 2 * (z(tt[0]) + z(tt) - 2)
+    for y in rr(1, z(tt) - 1):
+        for x in rr(1, z(tt[0]) - 1):
             t = tt[y][x]
-            if t > min(max(tt[y][:x]), max(tt[y][x + 1 :]), max([i[x] for i in tt][:y]), max([i[x] for i in tt][y + 1 :])):
+            if t > m1(m2(tt[y][:x]), m2(tt[y][x + 1 :]), m2([i[x] for i in tt][:y]), m2([i[x] for i in tt][y + 1 :])):
                 n += 1
-            r = (x if len([i for i, v in e(tt[y][:x][::-1]) if v - t >= 0]) == 0 else [i for i, v in e(tt[y][:x][::-1]) if v - t >= 0][0] + 1) * \
-                (len(tt[0]) - x - 1 if len([i for i, v in e(tt[y][x + 1 :]) if v - t >= 0]) == 0 else [i for i, v in e(tt[y][x + 1 :]) if v - t >= 0][0] + 1) * \
-                (y if len([i for i, v in e([i[x] for i in tt][:y][::-1]) if v - t >= 0]) == 0 else [i for i, v in e([i[x] for i in tt][:y][::-1]) if v - t >= 0][0] + 1) * \
-                (len(tt) - y - 1 if len([i for i, v in e([i[x] for i in tt][y + 1 :]) if v - t >= 0]) == 0 else [i for i, v in e([i[x] for i in tt][y + 1 :]) if v - t >= 0][0] + 1)
+            r = (x if z([i for i, v in e(tt[y][:x][::-1]) if v - t >= 0]) == 0 else [i for i, v in e(tt[y][:x][::-1]) if v - t >= 0][0] + 1) * \
+                (z(tt[0]) - x - 1 if z([i for i, v in e(tt[y][x + 1 :]) if v - t >= 0]) == 0 else [i for i, v in e(tt[y][x + 1 :]) if v - t >= 0][0] + 1) * \
+                (y if z([i for i, v in e([i[x] for i in tt][:y][::-1]) if v - t >= 0]) == 0 else [i for i, v in e([i[x] for i in tt][:y][::-1]) if v - t >= 0][0] + 1) * \
+                (z(tt) - y - 1 if z([i for i, v in e([i[x] for i in tt][y + 1 :]) if v - t >= 0]) == 0 else [i for i, v in e([i[x] for i in tt][y + 1 :]) if v - t >= 0][0] + 1)
             s = r if r > s else s
     return n, s
 
