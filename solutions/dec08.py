@@ -1,8 +1,8 @@
-from utils.data_reader import get_puzzle_input
+from utils.data_reader import get_puzzle_input, short
 
 def solve(data):
     tt = [[*map(int, l)] for l in data]
-    m1, m2, e, z, rr = (min, max, enumerate, len, range)
+    m1, m2, e, z, rr = short
     s = 0
     n = 2 * (z(tt[0]) + z(tt) - 2)
     for y in rr(1, z(tt) - 1):
