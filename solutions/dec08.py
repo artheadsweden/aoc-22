@@ -10,11 +10,11 @@ def solve(data):
             t = tt[y][x]
             if t > min(max(tt[y][:x]), max(tt[y][x + 1 :]), max([i[x] for i in tt][:y]), max([i[x] for i in tt][y + 1 :])):
                 n += 1
-            ls = x if len([i for i, v in enumerate(tt[y][:x][::-1]) if v - t >= 0]) == 0 else [i for i, v in enumerate(tt[y][:x][::-1]) if v - t >= 0][0] + 1
-            rs = len(tt[0]) - x - 1 if len([i for i, v in enumerate(tt[y][x + 1 :]) if v - t >= 0]) == 0 else [i for i, v in enumerate(tt[y][x + 1 :]) if v - t >= 0][0] + 1
-            ts = y if len([i for i, v in enumerate([i[x] for i in tt][:y][::-1]) if v - t >= 0]) == 0 else [i for i, v in enumerate([i[x] for i in tt][:y][::-1]) if v - t >= 0][0] + 1
-            bs = len(tt) - y - 1 if len([i for i, v in enumerate([i[x] for i in tt][y + 1 :]) if v - t >= 0]) == 0 else [i for i, v in enumerate([i[x] for i in tt][y + 1 :]) if v - t >= 0][0] + 1
-            s = ls * rs * ts * bs if ls * rs * ts * bs > s else s
+            r = (x if len([i for i, v in enumerate(tt[y][:x][::-1]) if v - t >= 0]) == 0 else [i for i, v in enumerate(tt[y][:x][::-1]) if v - t >= 0][0] + 1) * \
+                (len(tt[0]) - x - 1 if len([i for i, v in enumerate(tt[y][x + 1 :]) if v - t >= 0]) == 0 else [i for i, v in enumerate(tt[y][x + 1 :]) if v - t >= 0][0] + 1) * \
+                (y if len([i for i, v in enumerate([i[x] for i in tt][:y][::-1]) if v - t >= 0]) == 0 else [i for i, v in enumerate([i[x] for i in tt][:y][::-1]) if v - t >= 0][0] + 1) * \
+                (len(tt) - y - 1 if len([i for i, v in enumerate([i[x] for i in tt][y + 1 :]) if v - t >= 0]) == 0 else [i for i, v in enumerate([i[x] for i in tt][y + 1 :]) if v - t >= 0][0] + 1)
+            s = r if r > s else s
     return n, s
 
 def main():
