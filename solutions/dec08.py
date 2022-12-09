@@ -17,12 +17,10 @@ def solve(data):
             s = r if r > s else s
     return n, s
 
+
 def main():
-    import time
-    t1 = time.time()
     data = get_puzzle_input('08.txt')
     one, two = solve(data)
-    print(time.time()-t1)
     print(f'Puzzle 1: {one}')
     print(f'Puzzle 2: {two}')    
 
